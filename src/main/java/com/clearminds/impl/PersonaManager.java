@@ -1,5 +1,10 @@
 package com.clearminds.impl;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
 import com.clearminds.excepciones.InstanceException;
 import com.clearminds.interfaces.ServicioPersona;
 import com.clearminds.model.Persona;
@@ -7,12 +12,15 @@ import com.clearminds.model.Persona;
 public class PersonaManager {
 
 	private ServicioPersona serv;
+	Properties p = new Properties();
 
 	public PersonaManager() throws InstanceException {
 		try {
-			Class<?> clase = Class.forName("com.clearminds.impl.ServicioPersonaBDD");
+			p.load(new FileReader("config.properties"));
+			String nombre = p.getProperty("forName");
+			Class<?> clase = Class.forName(nombre);
 			serv = (ServicioPersona) clase.newInstance();
-		} catch (Exception e) {
+		} catch ( Exception  e) {
 			e.printStackTrace();
 			throw new InstanceException("Error al obtener una instancia de Servicio Persona");
 		}
