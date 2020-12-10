@@ -10,7 +10,7 @@ public class TestManager {
 		try {
 			
 			pm = new PersonaManager();
-			pm.insertarPersona(new Persona("Danny Alexander archivos",
+			pm.insertarPersona(new Persona("Danny Alexander",
 					"Martinez Narvaez", 29));
 		} catch (InstanceException e) {
 			e.printStackTrace();

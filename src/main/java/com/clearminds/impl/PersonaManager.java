@@ -15,10 +15,8 @@ public class PersonaManager {
 	Properties p = new Properties();
 
 	public PersonaManager() throws InstanceException {
-		try {
-			p.load(new FileReader("config.properties"));
-			String nombre = p.getProperty("forName");
-			Class<?> clase = Class.forName(nombre);
+		try {			
+			Class<?> clase = Class.forName(obtenerClass());
 			serv = (ServicioPersona) clase.newInstance();
 		} catch ( Exception  e) {
 			e.printStackTrace();
@@ -28,6 +26,11 @@ public class PersonaManager {
 
 	public void insertarPersona(Persona persona) {
 		serv.insertar(persona);
+	}
+	
+	private String obtenerClass() throws FileNotFoundException, IOException{
+		p.load(new FileReader("config.properties"));
+		return p.getProperty("forName");
 	}
 
 }
