@@ -6,6 +6,6 @@ import com.clearminds.model.Persona;
 public class TestManager {
 	public static void main(String[] args) {
 		PersonaManager pm = new PersonaManager();
-		pm.insertarPersona(new Persona("Danny Alexander", "Martinez Narvaez", 29));
+		pm.insertarPersona(new Persona("Danny Alexander archivos", "Martinez Narvaez", 29));
 	}
 }
